@@ -1,3 +1,497 @@
-<script>
-  location.href="https://webmailpro.store/";
-</script>
+<?php
+// index.php - Site para aprovação G2RS Google Ads
+// Empresa: Souza e Souza Junior - Advogados Associados
+// CNAE: 69.11-7-01 - Serviços advocatícios
+header('Content-Type: text/html; charset=utf-8');
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="description" content="Souza e Souza Junior - Advogados Associados | Escritório de advocacia em São José dos Campos/SP. Atuação em Direito Civil, Trabalhista, Empresarial e mais. Agende sua consulta!">
+    <meta name="keywords" content="advogados, advocacia, São José dos Campos, direito civil, direito trabalhista, direito empresarial, Souza e Souza Junior, escritório de advocacia">
+    <meta name="author" content="Souza e Souza Junior - Advogados Associados">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://<?php echo $_SERVER['HTTP_HOST']; ?>/">
+    <meta name="google-site-verification" content="INSIRA_SEU_CODIGO_DE_VERIFICACAO_AQUI">
+    
+    <title>Souza e Souza Junior - Advogados Associados | São José dos Campos/SP</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background-color: #f5f3f0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: #1a1a2e;
+            color: #e0d6c8;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.3);
+        }
+
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            color: #c9a96e;
+        }
+
+        .logo p {
+            font-size: 0.7rem;
+            color: #a89f94;
+        }
+
+        .badge-cnae {
+            background: #2a2a4a;
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            border: 1px solid #c9a96e;
+            color: #c9a96e;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: #e0d6c8;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #c9a96e;
+        }
+
+        /* Hero com imagem de advocacia */
+        .hero {
+            background: linear-gradient(rgba(26,26,46,0.7), rgba(26,26,46,0.7)), url('https://images.unsplash.com/photo-1589391886645-d51941baf7fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center 30%;
+            height: 75vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .btn-contato {
+            display: inline-block;
+            background: #c9a96e;
+            color: #1a1a2e;
+            padding: 12px 32px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1.5rem;
+            transition: 0.3s;
+        }
+
+        .btn-contato:hover {
+            background: #b8985e;
+            transform: scale(1.02);
+        }
+
+        /* Seções */
+        section {
+            padding: 70px 0;
+            border-bottom: 1px solid #ddd6cc;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2.5rem;
+            color: #1a1a2e;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #c9a96e;
+            margin: 0.6rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* Grid de áreas de atuação */
+        .areas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .area-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: 0.3s;
+            text-align: center;
+            padding: 2rem 1.5rem;
+            border-top: 4px solid #c9a96e;
+        }
+
+        .area-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+        }
+
+        .area-card .icone {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .area-card h3 {
+            margin: 0.5rem 0;
+            color: #1a1a2e;
+        }
+
+        .area-card p {
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        /* Sobre a empresa */
+        .sobre-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .sobre-texto {
+            flex: 1.5;
+        }
+
+        .sobre-imagem {
+            flex: 1;
+        }
+
+        .sobre-imagem img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .dados-empresa {
+            background: #e8e0d6;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 1.5rem;
+        }
+
+        .dados-empresa p {
+            margin-bottom: 0.5rem;
+        }
+
+        .dados-empresa strong {
+            color: #1a1a2e;
+        }
+
+        .dados-empresa .destaque {
+            color: #1a1a2e;
+            font-weight: 600;
+        }
+
+        /* Contato */
+        .contato-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .contato-card {
+            background: white;
+            padding: 1.8rem;
+            border-radius: 16px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .contato-card h3 {
+            color: #1a1a2e;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #c9a96e;
+            padding-bottom: 0.5rem;
+        }
+
+        .contato-card p {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .contato-card strong {
+            min-width: 110px;
+            color: #1a1a2e;
+        }
+
+        .contato-card a {
+            color: #1a1a2e;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .contato-card a:hover {
+            color: #c9a96e;
+        }
+
+        /* Mapa */
+        .mapa-container {
+            margin-top: 1rem;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .mapa-container iframe {
+            width: 100%;
+            height: 300px;
+            border: 0;
+        }
+
+        /* Privacidade */
+        .privacidade-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .privacidade-box h3 {
+            color: #1a1a2e;
+            margin: 1.2rem 0 0.5rem;
+        }
+
+        .privacidade-box h3:first-child {
+            margin-top: 0;
+        }
+
+        footer {
+            background: #1a1a2e;
+            color: #a89f94;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: #c9a96e;
+            text-decoration: none;
+        }
+
+        footer .footer-destaque {
+            color: #c9a96e;
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 { font-size: 2rem; }
+            .hero { height: 60vh; }
+            .header-flex { flex-direction: column; text-align: center; }
+            .nav-links { justify-content: center; }
+            .contato-card p { flex-direction: column; align-items: flex-start; }
+            .contato-card strong { min-width: auto; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div class="header-flex">
+            <div class="logo">
+                <h1>Souza e Souza Junior</h1>
+                <p>Advogados Associados</p>
+            </div>
+            <div class="badge-cnae">
+                ⚖️ CNAE: 69.11-7-01 | Serviços Advocatícios
+            </div>
+            <ul class="nav-links">
+                <li><a href="#areas">Áreas de Atuação</a></li>
+                <li><a href="#sobre">O Escritório</a></li>
+                <li><a href="#privacidade">Privacidade</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- Hero -->
+    <div class="hero">
+        <div class="hero-content">
+            <h2>Excelência e compromisso com a justiça</h2>
+            <p>Souza e Souza Junior - Advogados Associados. Mais de 20 anos de atuação em São José dos Campos/SP. Defendemos seus direitos com ética e dedicação.</p>
+            <a href="#contato" class="btn-contato">Agende sua consulta →</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Áreas de Atuação -->
+        <section id="areas">
+            <h2 class="section-title">Áreas de Atuação</h2>
+            <div class="areas-grid">
+                <div class="area-card">
+                    <div class="icone">⚖️</div>
+                    <h3>Direito Civil</h3>
+                    <p>Contratos, indenizações, responsabilidade civil, direito das obrigações e questões patrimoniais.</p>
+                </div>
+                <div class="area-card">
+                    <div class="icone">👷</div>
+                    <h3>Direito Trabalhista</h3>
+                    <p>Reclamações trabalhistas, rescisões, assédio moral, horas extras e direitos dos trabalhadores.</p>
+                </div>
+                <div class="area-card">
+                    <div class="icone">🏢</div>
+                    <h3>Direito Empresarial</h3>
+                    <p>Constituição de empresas, contratos comerciais, recuperação judicial e sucessão empresarial.</p>
+                </div>
+                <div class="area-card">
+                    <div class="icone">👨‍👩‍👧‍👦</div>
+                    <h3>Direito de Família</h3>
+                    <p>Divórcio, guarda de filhos, pensão alimentícia, inventários e partilha de bens.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sobre o escritório -->
+        <section id="sobre">
+            <h2 class="section-title">Sobre o Escritório</h2>
+            <div class="sobre-flex">
+                <div class="sobre-texto">
+                    <p>O escritório <strong>Souza e Souza Junior - Advogados Associados</strong> atua com excelência e compromisso na prestação de serviços jurídicos em <strong>São José dos Campos/SP</strong>. Fundado em <strong>12 de julho de 2001</strong>, construímos uma trajetória sólida baseada na confiança de nossos clientes.</p>
+                    <p style="margin-top: 1rem;">Nossa equipe é formada por profissionais qualificados e comprometidos com a defesa dos interesses de cada cliente, oferecendo soluções jurídicas personalizadas e eficientes em diversas áreas do Direito.</p>
+                    
+                    <div class="dados-empresa">
+                        <p><strong>📌 CNPJ:</strong> 04.610.837/0001-03</p>
+                        <p><strong>🏢 Razão Social:</strong> Souza e Souza Junior - Advogados Associados</p>
+                        <p><strong>🎯 Atividade principal:</strong> 69.11-7-01 - Serviços advocatícios</p>
+                        <p><strong>📅 Data de fundação:</strong> 12 de julho de 2001</p>
+                        <p><strong>📍 Sede:</strong> São José dos Campos - SP</p>
+                        <p><strong>📬 Endereço:</strong> Avenida Engenheiro Francisco José Longo, 149, Sala 141 e 143, 14º Andar, Centro, São José dos Campos/SP, CEP: 12245-001</p>
+                        <p><strong>📊 Situação Cadastral:</strong> <span class="destaque">Ativa ✓</span></p>
+                    </div>
+                </div>
+                <div class="sobre-imagem">
+                    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Escritório de advocacia">
+                </div>
+            </div>
+        </section>
+
+        <!-- Política de Privacidade (LGPD) -->
+        <section id="privacidade">
+            <h2 class="section-title">Política de Privacidade</h2>
+            <div class="privacidade-box">
+                <p>A <strong>Souza e Souza Junior - Advogados Associados</strong> respeita sua privacidade e está comprometida com a proteção dos seus dados pessoais, em conformidade com a Lei Geral de Proteção de Dados (LGPD - Lei 13.709/2018).</p>
+                
+                <h3>📌 Coleta de informações</h3>
+                <p>Coletamos apenas os dados que você voluntariamente nos fornece através do formulário de contato, e-mail ou telefone: nome completo, telefone, e-mail e mensagem. Estes dados são utilizados exclusivamente para atendimento e prestação de serviços jurídicos.</p>
+                
+                <h3>🔐 Como utilizamos seus dados</h3>
+                <p>Utilizamos suas informações exclusivamente para responder suas dúvidas, agendar consultas, enviar informações sobre seus processos e comunicar novidades. Não compartilhamos seus dados com terceiros sem autorização expressa.</p>
+                
+                <h3>📧 Seus direitos (LGPD)</h3>
+                <p>Você pode solicitar a correção, exclusão ou portabilidade dos seus dados a qualquer momento através do nosso e-mail de contato.</p>
+                
+                <p style="margin-top: 1.2rem; font-size: 0.85rem;">Última atualização: Agosto/2026</p>
+            </div>
+        </section>
+
+        <!-- Contato e Localização -->
+        <section id="contato">
+            <h2 class="section-title">Contato e Localização</h2>
+            <div class="contato-grid">
+                <div class="contato-card">
+                    <h3>📬 Informações de Contato</h3>
+                    <p><strong>📧 E-mail:</strong> <a href="mailto:eliani@contarhcontabilidade.com.br">eliani@contarhcontabilidade.com.br</a></p>
+                    <p><strong>📞 Telefone:</strong> <a href="tel:+551233089470">(12) 3308-9470</a></p>
+                    <p><strong>📍 Endereço:</strong><br>
+                    Avenida Engenheiro Francisco José Longo, 149<br>
+                    Sala 141 e 143, 14º Andar<br>
+                    Centro, São José dos Campos - SP<br>
+                    CEP: 12245-001</p>
+                </div>
+                <div class="contato-card">
+                    <h3>🏢 Sobre o Escritório</h3>
+                    <p><strong>CNPJ:</strong> 04.610.837/0001-03</p>
+                    <p><strong>Fundação:</strong> 12 de julho de 2001</p>
+                    <p><strong>⏰ Atendimento:</strong><br>
+                    Segunda a Sexta: 9h às 18h<br>
+                    Sábados: Fechado</p>
+                    <p><strong>📦 Atendimento:</strong> Presencial e online. Agendamento recomendado.</p>
+                    <p style="margin-top: 0.5rem;"><a href="https://www.tonyveiculos.com.br/" target="_blank" style="color: #1a1a2e; font-weight: bold; text-decoration: underline;">🚗 Parceiro: Tony Veículos →</a></p>
+                </div>
+            </div>
+            
+            <!-- Mapa -->
+            <div class="mapa-container" style="margin-top: 2rem;">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3669.695193924298!2d-45.887641!3d-23.179993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cc4b9e2f1b6a1b%3A0x8b5e5a1f5e0f8c5d!2sAv.%20Eng.%20Francisco%20Jos%C3%A9%20Longo%2C%20149%20-%20Centro%2C%20S%C3%A3o%20Jos%C3%A9%20dos%20Campos%20-%20SP%2C%2012245-001!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </section>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <p><span class="footer-destaque">Souza e Souza Junior - Advogados Associados</span> | CNPJ: 04.610.837/0001-03</p>
+        <p>CNAE: 69.11-7-01 - Serviços advocatícios</p>
+        <p>Avenida Engenheiro Francisco José Longo, 149 - Sala 141 e 143, 14º Andar - Centro - São José dos Campos/SP - CEP: 12245-001</p>
+        <p>Fundado em 12 de julho de 2001 | &copy; <?php echo date('Y'); ?> Todos os direitos reservados.</p>
+    </div>
+</footer>
+
+</body>
+</html>
